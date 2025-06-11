@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floresta FII - Fundo de Investimento Imobiliário</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --secondary-color: #1b5e20;
+            --light-color: #81c784;
+            --dark-color: #1b5e20;
+            --text-color: #333;
+            --light-text: #f5f5f5;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background-color: var(--primary-color) !important;
+        }
+
+        .navbar-brand img {
+            height: 50px;
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            position: relative;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        .section-title:after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .feature-box {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 50px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .about-section {
+            background-color: #f9f9f9;
+            padding: 80px 0;
+        }
+
+        .contact-info {
+            margin-bottom: 20px;
+        }
+
+        .contact-icon {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+
+        .property-card {
+            margin-bottom: 30px;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .property-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .property-img {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        .testimonial-card {
+            padding: 20px;
+            border-radius: 5px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer a {
+            color: var(--light-color);
+        }
+
+        .footer a:hover {
+            color: white;
+            text-decoration: none;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 20px;
+            margin-right: 15px;
+        }
+
+        .social-icons a:hover {
+            color: var(--light-color);
+        }
+
+        .map-container {
+            height: 300px;
+            width: 100%;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .stats-number {
+            font-size: 50px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .stats-label {
+            font-size: 18px;
+            color: var(--text-color);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://via.placeholder.com/150x50?text=Floresta+FII" alt="Floresta FII">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sobre">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicos">Serviços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfólio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contato">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-4">Investindo no futuro do mercado imobiliário</h1>
+            <p class="lead mb-5">A Floresta FII oferece oportunidades exclusivas de investimento em imóveis de alto
+                potencial</p>
+            <a href="#contato" class="btn btn-primary btn-lg px-4 me-2">Fale Conosco</a>
+            <a href="#servicos" class="btn btn-outline-light btn-lg px-4">Nossos Serviços</a>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stats-number">R$ 50M+</div>
+                    <div class="stats-label">Em ativos</div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stats-number">15+</div>
+                    <div class="stats-label">Imóveis</div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stats-number">100+</div>
+                    <div class="stats-label">Investidores</div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stats-number">12%</div>
+                    <div class="stats-label">Rendimento médio</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="sobre">
+        <div class="container">
+            <h2 class="text-center section-title">Sobre a Floresta FII</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80"
+                        alt="Sobre nós" class="img-fluid rounded">
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <h3 class="mb-4">Nossa História</h3>
+                    <p>A Floresta Fundo de Investimento Imobiliário foi fundada em 2023 com o objetivo de proporcionar
+                        aos investidores acesso a oportunidades imobiliárias de alto potencial com gestão profissional e
+                        transparente.</p>
+                    <p>Nosso CNPJ 51.889.479/0001-08 está registrado como Fundo de Investimento Imobiliário, com sede no
+                        prestigiado bairro do Itaim Bibi em São Paulo.</p>
+                    <p>Atuamos na identificação, aquisição e gestão de imóveis comerciais e residenciais de alto padrão,
+                        proporcionando renda regular e valorização do patrimônio para nossos cotistas.</p>
+                    <div class="row mt-4">
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-check-circle fa-2x text-success me-3"></i>
+                                <div>
+                                    <h5 class="mb-0">Transparência</h5>
+                                    <p class="mb-0">Gestão profissional e relatórios detalhados</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-chart-line fa-2x text-success me-3"></i>
+                                <div>
+                                    <h5 class="mb-0">Rentabilidade</h5>
+                                    <p class="mb-0">Foco em ativos com alto potencial</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-5" id="servicos">
+        <div class="container">
+            <h2 class="text-center section-title">Nossos Serviços</h2>
+            <p class="text-center mb-5">Oferecemos diversas opções de investimento imobiliário para atender às
+                necessidades de cada perfil de investidor.</p>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h4>Fundos Imobiliários</h4>
+                        <p>Invista em cotas de fundos especializados em diferentes segmentos do mercado imobiliário com
+                            potencial de valorização e geração de renda.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h4>Laudos Técnicos</h4>
+                        <p>Análises detalhadas e avaliações de imóveis para tomada de decisão de investimento com base
+                            em dados técnicos e mercadológicos.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <h4>Gestão de Ativos</h4>
+                        <p>Administração profissional de imóveis com foco em maximizar o retorno financeiro através de
+                            estratégias de gestão ativa.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-search-dollar"></i>
+                        </div>
+                        <h4>Due Diligence</h4>
+                        <p>Análise detalhada de oportunidades de investimento para identificação de riscos e potenciais
+                            antes da aquisição.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-hand-holding-usd"></i>
+                        </div>
+                        <h4>Assessoria</h4>
+                        <p>Orientação especializada para investidores que desejam diversificar sua carteira com ativos
+                            imobiliários.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <h4>Relatórios</h4>
+                        <p>Informações periódicas sobre desempenho, posicionamento e perspectivas dos investimentos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="py-5 bg-light" id="portfolio">
+        <div class="container">
+            <h2 class="text-center section-title">Nosso Portfólio</h2>
+            <p class="text-center mb-5">Conheça alguns dos nossos principais empreendimentos e ativos sob gestão.</p>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card property-card">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80"
+                            class="card-img-top property-img" alt="Edifício Comercial">
+                        <div class="card-body">
+                            <h5 class="card-title">Edifício Green Tower</h5>
+                            <p class="card-text">Edifício corporativo classe A+ localizado na Faria Lima, com 25 andares
+                                e 98% de ocupação.</p>
+                            <ul class="list-group list-group-flush mb-3">
+                                <li class="list-group-item"><i class="fas fa-map-marker-alt me-2"></i> São Paulo - SP
+                                </li>
+                                <li class="list-group-item"><i class="fas fa-arrows-alt me-2"></i> 25.000 m²</li>
+                                <li class="list-group-item"><i class="fas fa-percentage me-2"></i> Rendimento: 11,5%
+                                    a.a.</li>
+                            </ul>
+                            <a href="#" class="btn btn-primary">Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card property-card">
+                        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80"
+                            class="card-img-top property-img" alt="Residencial">
+                        <div class="card-body">
+                            <h5 class="card-title">Residencial Forest Hills</h5>
+                            <p class="card-text">Conjunto residencial de alto padrão com 120 unidades em Moema, São
+                                Paulo.</p>
+                            <ul class="list-group list-group-flush mb-3">
+                                <li class="list-group-item"><i class="fas fa-map-marker-alt me-2"></i> São Paulo - SP
+                                </li>
+                                <li class="list-group-item"><i class="fas fa-arrows-alt me-2"></i> 15.000 m²</li>
+                                <li class="list-group-item"><i class="fas fa-percentage me-2"></i> Rendimento: 12,3%
+                                    a.a.</li>
+                            </ul>
+                            <a href="#" class="btn btn-primary">Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card property-card">
+                        <img src="https://images.unsplash.com/photo-1554469384-e58fac16e23a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80"
+                            class="card-img-top property-img" alt="Shopping Center">
+                        <div class="card-body">
+                            <h5 class="card-title">Shopping Forest Mall</h5>
+                            <p class="card-text">Shopping center com 180 lojas, cinema e praça de alimentação em
+                                Campinas.</p>
+                            <ul class="list-group list-group-flush mb-3">
+                                <li class="list-group-item"><i class="fas fa-map-marker-alt me-2"></i> Campinas - SP
+                                </li>
+                                <li class="list-group-item"><i class="fas fa-arrows-alt me-2"></i> 45.000 m²</li>
+                                <li class="list-group-item"><i class="fas fa-percentage me-2"></i> Rendimento: 13,1%
+                                    a.a.</li>
+                            </ul>
+                            <a href="#" class="btn btn-primary">Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="#" class="btn btn-outline-primary">Ver Todos os Ativos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">O que dizem nossos investidores</h2>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Depoimento"
+                                class="testimonial-img">
+                            <div>
+                                <h5 class="mb-0">Ana Carolina Silva</h5>
+                                <p class="mb-0 text-muted">Investidora desde 2023</p>
+                            </div>
+                        </div>
+                        <p>"A Floresta FII trouxe para minha carteira a estabilidade que eu buscava. Os relatórios são
+                            transparentes e os rendimentos chegam sempre na data certa."</p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Depoimento"
+                                class="testimonial-img">
+                            <div>
+                                <h5 class="mb-0">Roberto Almeida</h5>
+                                <p class="mb-0 text-muted">Investidor desde 2024</p>
+                            </div>
+                        </div>
+                        <p>"Excelente equipe de gestão. Eles realmente entendem do mercado imobiliário e sabem
+                            selecionar os melhores ativos. Minha carteira nunca esteve tão diversificada."</p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Depoimento"
+                                class="testimonial-img">
+                            <div>
+                                <h5 class="mb-0">Mariana Oliveira</h5>
+                                <p class="mb-0 text-muted">Investidora desde 2023</p>
+                            </div>
+                        </div>
+                        <p>"A assessoria personalizada fez toda a diferença para mim que estava começando a investir em
+                            FIIs. Recomendo a todos que buscam segurança e bons retornos."</p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-5 bg-light" id="contato">
+        <div class="container">
+            <h2 class="text-center section-title">Entre em Contato</h2>
+
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="contact-info">
+                        <h4 class="mb-4">Informações de Contato</h4>
+
+                        <div class="d-flex align-items-start mb-3">
+                            <i class="fas fa-map-marker-alt contact-icon mt-1"></i>
+                            <div>
+                                <h5>Endereço</h5>
+                                CIDREIRA CLUBE DE PESCA <br>
+                                R. Altemar Dutra, 82 <br>
+                                Rio grande do sul , Cidreira
+                                95595-000
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-start mb-3">
+                            <i class="fas fa-phone-alt contact-icon mt-1"></i>
+                            <div>
+                                <h5>Telefones</h5>
+                                <p>(11) 3165-6000<br>
+                                    (11) 96135-6048 (WhatsApp)</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-start mb-3">
+                            <i class="fas fa-envelope contact-icon mt-1"></i>
+                            <div>
+                                <h5>E-mail</h5>
+                                <p>financeiro@monetar.com.br</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-start mb-3">
+                            <i class="fas fa-clock contact-icon mt-1"></i>
+                            <div>
+                                <h5>Horário de Funcionamento</h5>
+                                <p>Segunda a Sexta: 9h às 18h</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <h5>Redes Sociais</h5>
+                            <div class="social-icons">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="mb-4">Envie uma Mensagem</h4>
+                            <form>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Seu Nome" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" placeholder="Seu E-mail" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="tel" class="form-control" placeholder="Seu Telefone">
+                                </div>
+                                <div class="mb-3">
+                                    <select class="form-select">
+                                        <option selected>Assunto</option>
+                                        <option>Informações sobre Investimento</option>
+                                        <option>Dúvidas sobre Fundos</option>
+                                        <option>Proposta Comercial</option>
+                                        <option>Outros</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <textarea class="form-control" rows="5" placeholder="Sua Mensagem"
+                                        required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-5">
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.236558728748!2d-46.67477292468634!3d-23.5861538624921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5744e0ebff5b%3A0x769bf4a32f914782!2sR.%20Joaquim%20Floriano%2C%20100%20-%20Itaim%20Bibi%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2004534-000!5e0!3m2!1spt-BR!2sbr!4v1717871234567!5m2!1spt-BR!2sbr"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">Perguntas Frequentes</h2>
+
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            O que é um Fundo de Investimento Imobiliário (FII)?
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Um Fundo de Investimento Imobiliário (FII) é uma comunhão de recursos destinados à aplicação
+                            em empreendimentos imobiliários, que tem como objetivo proporcionar aos seus cotistas
+                            rendimentos periódicos, além da valorização das cotas. Os FIIs são regulamentados pela CVM e
+                            oferecem uma forma acessível de investir no mercado imobiliário.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#faq2">
+                            Como posso investir na Floresta FII?
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Para investir na Floresta FII, você pode entrar em contato conosco através dos telefones,
+                            e-mail ou formulário no site. Nossa equipe irá orientá-lo sobre o processo de abertura de
+                            conta, documentação necessária e valores mínimos para investimento, além de tirar todas as
+                            suas dúvidas sobre nossos fundos.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#faq3">
+                            Qual é o valor mínimo para investir?
+                        </button>
+                    </h2>
+                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            O valor mínimo varia de acordo com o fundo escolhido. Temos opções a partir de R$ 5.000,00,
+                            possibilitando que diferentes perfis de investidores possam participar. Entre em contato
+                            para conhecer as opções mais adequadas ao seu perfil e objetivos financeiros.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#faq4">
+                            Como são pagos os rendimentos?
+                        </button>
+                    </h2>
+                    <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Os rendimentos são pagos mensalmente ou trimestralmente, dependendo do fundo, através de
+                            crédito em conta corrente ou reinvestimento automático, conforme escolha do cotista. Todos
+                            os pagamentos são acompanhados de relatório detalhado sobre a performance do fundo.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#faq5">
+                            Quais são os riscos envolvidos?
+                        </button>
+                    </h2>
+                    <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Como todo investimento, os FIIs apresentam riscos, como variação do valor das cotas,
+                            vacância dos imóveis e mudanças nas taxas de juros. No entanto, nossa estratégia de
+                            diversificação e gestão profissional busca mitigar esses riscos. Recomendamos que o
+                            investimento seja feito com horizonte de médio a longo prazo.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <img src="https://via.placeholder.com/150x50?text=Floresta+FII" alt="Floresta FII" class="mb-3">
+                    <p>A Floresta FII é um fundo de investimento imobiliário com foco em proporcionar renda regular e
+                        valorização do patrimônio através de uma gestão profissional e transparente.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Links Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#home">Home</a></li>
+                        <li class="mb-2"><a href="#sobre">Sobre Nós</a></li>
+                        <li class="mb-2"><a href="#servicos">Serviços</a></li>
+                        <li class="mb-2"><a href="#portfolio">Portfólio</a></li>
+                        <li class="mb-2"><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Nossos Fundos</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#">Floresta FII Tijuca</a></li>
+                        <li class="mb-2"><a href="#">Floresta FII Green</a></li>
+                        <li class="mb-2"><a href="#">Floresta FII Premium</a></li>
+                        <li class="mb-2"><a href="#">Floresta FII Residencial</a></li>
+                        <li class="mb-2"><a href="#">Floresta FII Shoppings</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5>Newsletter</h5>
+                    <p>Assine nossa newsletter para receber atualizações e oportunidades de investimento.</p>
+                    <form class="mb-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Seu E-mail">
+                            <button class="btn btn-primary" type="submit">Assinar</button>
+                        </div>
+                    </form>
+                    <p>CNPJ: 93.802.676/0001-80 </p>
+                </div>
+            </div>
+            <hr class="mt-4" style="background-color: rgba(255,255,255,0.1);">
+            <div class="row">
+                <div class="col-md-6 text"></div>
