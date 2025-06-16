@@ -1,0 +1,672 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atendimento</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        H
+                    </div>
+                    <span class="logo-text">Atendimento</span>
+                </div>
+
+                <nav class="nav-desktop">
+                    <a href="#inicio" class="nav-link">Início</a>
+                    <a href="#como-funciona" class="nav-link">Como Funciona</a>
+                    <a href="#beneficios" class="nav-link">Benefícios</a>
+                    <a href="#depoimentos" class="nav-link">Depoimentos</a>
+                    <a href="#contato" class="nav-link">Contato</a>
+                </nav>
+
+                <div class="cta-desktop">
+                    <button class="btn-primary" onclick="scrollToSection('contato')">
+                        Solicitar Quitação
+                    </button>
+                </div>
+
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+
+            <div class="mobile-menu" id="mobileMenu">
+                <nav class="mobile-nav">
+                    <a href="#inicio" class="mobile-nav-link" onclick="closeMobileMenu()">Início</a>
+                    <a href="#como-funciona" class="mobile-nav-link" onclick="closeMobileMenu()">Como Funciona</a>
+                    <a href="#beneficios" class="mobile-nav-link" onclick="closeMobileMenu()">Benefícios</a>
+                    <a href="#depoimentos" class="mobile-nav-link" onclick="closeMobileMenu()">Depoimentos</a>
+                    <a href="#contato" class="mobile-nav-link" onclick="closeMobileMenu()">Contato</a>
+                    <button class="btn-primary mobile-cta" onclick="scrollToSection('contato'); closeMobileMenu();">
+                        Solicitar Quitação
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section id="inicio" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Resolva sua dívida veicular de forma 
+                    <span class="text-highlight">rápida e segura!</span>
+                </h1>
+                
+                <p class="hero-subtitle display-none">
+                    Especialistas em negociação e quitação de veículos com as melhores condições do mercado.
+                </p>
+
+                <div class="hero-buttons">
+                    <button class="btn-white" onclick="scrollToSection('contato')">
+                        Simular Quitação Agora
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    
+                    <button class="btn-outline" onclick="scrollToSection('como-funciona')">
+                        Como Funciona
+                    </button>
+                </div>
+
+                <div class="services-tags mobile-none">
+                    <span class="service-tag">2ª Via de Boleto</span>
+                    <span class="service-tag">Antecipação de Parcelas</span>
+                    <span class="service-tag">Atendimento Online</span>
+                    <span class="service-tag">Renegociação de Dívidas</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="scroll-icon">
+                <div class="scroll-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Carousel -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nossos Serviços</h2>
+                <p class="section-subtitle">
+                    Clique em qualquer serviço para falar conosco no WhatsApp
+                </p>
+            </div>
+
+            <div class="services-carousel">
+                <div class="carousel-container">
+                    <div class="carousel-track" id="servicesTrack">
+                        <div class="service-card" onclick="openWhatsApp('Olá! Gostaria de solicitar a 2ª via do meu boleto.')">
+                            <div class="service-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <h3 class="service-title">2ª Via de Boleto</h3>
+                            <p class="service-description">
+                                Emita a segunda via do seu boleto de forma rápida e prática
+                            </p>
+                            <div class="whatsapp-link">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>Falar no WhatsApp</span>
+                            </div>
+                        </div>
+
+                        <div class="service-card" onclick="openWhatsApp('Olá! Tenho interesse em antecipar parcelas do meu financiamento.')">
+                            <div class="service-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h3 class="service-title">Antecipação de Parcelas</h3>
+                            <p class="service-description">
+                                Antecipe suas parcelas e quite sua dívida mais rapidamente
+                            </p>
+                            <div class="whatsapp-link">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>Falar no WhatsApp</span>
+                            </div>
+                        </div>
+
+                        <div class="service-card" onclick="openWhatsApp('Olá! Gostaria de falar com um especialista sobre quitação veicular.')">
+                            <div class="service-icon">
+                                <i class="fas fa-headphones"></i>
+                            </div>
+                            <h3 class="service-title">Atendimento Online</h3>
+                            <p class="service-description">
+                                Atendimento especializado 100% online para sua comodidade
+                            </p>
+                            <div class="whatsapp-link">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>Falar no WhatsApp</span>
+                            </div>
+                        </div>
+
+                        <div class="service-card" onclick="openWhatsApp('Olá! Preciso renegociar minha dívida veicular.')">
+                            <div class="service-icon">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <h3 class="service-title">Renegociação de Dívidas</h3>
+                            <p class="service-description">
+                                Negocie sua dívida com as melhores condições do mercado
+                            </p>
+                            <div class="whatsapp-link">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>Falar no WhatsApp</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="carousel-btn carousel-prev" onclick="moveCarousel(-1)">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <button class="carousel-btn carousel-next" onclick="moveCarousel(1)">
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section id="beneficios" class="benefits-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Por que escolher nossos serviços?</h2>
+                <p class="section-subtitle">
+                    Oferecemos soluções completas para quitação veicular com transparência, agilidade e as melhores condições do mercado.
+                </p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <h3 class="benefit-title">Redução de Juros Abusivos</h3>
+                    <p class="benefit-description">
+                        Negociamos diretamente com bancos e financeiras para reduzir significativamente os juros da sua dívida veicular.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="benefit-title">Negociação com Bancos</h3>
+                    <p class="benefit-description">
+                        Nossa equipe especializada possui relacionamento direto com instituições financeiras para conseguir as melhores condições.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-file-check"></i>
+                    </div>
+                    <h3 class="benefit-title">Liberação de Gravame</h3>
+                    <p class="benefit-description">
+                        Cuidamos de toda a documentação necessária para liberar o gravame do seu veículo de forma rápida e segura.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="benefit-title">Documentação Regularizada</h3>
+                    <p class="benefit-description">
+                        Regularizamos toda a documentação do seu veículo rapidamente, garantindo que tudo esteja em ordem.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="como-funciona" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Como Funciona o Processo</h2>
+                <p class="section-subtitle">
+                    Um processo simples e transparente em apenas 3 passos para resolver sua dívida veicular
+                </p>
+            </div>
+
+            <div class="steps-container">
+                <div class="connection-line"></div>
+                
+                <div class="steps-grid">
+                    <div class="step">
+                        <div class="step-icon-container">
+                            <div class="step-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <div class="step-number">1</div>
+                        </div>
+                        
+                        <h3 class="step-title">Análise Gratuita da Dívida</h3>
+                        <p class="step-description">
+                            Analisamos sua situação financeira e identificamos as melhores oportunidades de negociação sem nenhum custo.
+                        </p>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-icon-container">
+                            <div class="step-icon">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <div class="step-number">2</div>
+                        </div>
+                        
+                        <h3 class="step-title">Negociação Personalizada</h3>
+                        <p class="step-description">
+                            Nossa equipe especializada negocia diretamente com o banco para conseguir as melhores condições de pagamento.
+                        </p>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-icon-container">
+                            <div class="step-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="step-number">3</div>
+                        </div>
+                        
+                        <h3 class="step-title">Quitação com Garantia</h3>
+                        <p class="step-description">
+                            Finalizamos o processo com total segurança jurídica e garantia de regularização completa da documentação.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee -->
+    <section class="guarantee-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Quitação 100% Legalizada e com Garantia!</h2>
+                <p class="section-subtitle">
+                    Conte com nossa experiência e atendimento especializado para resolver sua situação veicular
+                </p>
+            </div>
+
+            <div class="guarantee-grid">
+                <div class="guarantee-item">
+                    <div class="guarantee-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="guarantee-title">100% Seguro</h3>
+                    <p class="guarantee-description">
+                        Todos os processos são realizados dentro da mais rigorosa legalidade e transparência
+                    </p>
+                </div>
+
+                <div class="guarantee-item">
+                    <div class="guarantee-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="guarantee-title">Certificado</h3>
+                    <p class="guarantee-description">
+                        Empresa certificada e reconhecida no mercado de quitação veicular
+                    </p>
+                </div>
+
+                <div class="guarantee-item">
+                    <div class="guarantee-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="guarantee-title">Especializado</h3>
+                    <p class="guarantee-description">
+                        Equipe especializada com anos de experiência em negociação veicular
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="depoimentos" class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">O que nossos clientes dizem</h2>
+                <p class="section-subtitle">
+                    Milhares de clientes já resolveram suas pendências veiculares conosco. Veja alguns depoimentos:
+                </p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <i class="fas fa-quote-left"></i>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <p class="testimonial-content">
+                        "Consegui reduzir minha dívida em 50%! O atendimento foi excepcional e todo o processo foi muito transparente. Recomendo para todos que estão passando por dificuldades."
+                    </p>
+                    
+                    <div class="testimonial-author">
+                        <div class="author-avatar">M</div>
+                        <div class="author-info">
+                            <h4 class="author-name">Maria Silva</h4>
+                            <p class="author-role">Professora</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <i class="fas fa-quote-left"></i>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <p class="testimonial-content">
+                        "Serviço rápido e eficiente, recomendo! Em menos de 30 dias consegui quitar meu financiamento com condições muito melhores do que eu imaginava ser possível."
+                    </p>
+                    
+                    <div class="testimonial-author">
+                        <div class="author-avatar">J</div>
+                        <div class="author-info">
+                            <h4 class="author-name">João Santos</h4>
+                            <p class="author-role">Empresário</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <i class="fas fa-quote-left"></i>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <p class="testimonial-content">
+                        "Excelente atendimento! A equipe me ajudou desde o primeiro contato até a finalização. Agora meu carro está livre de qualquer pendência financeira."
+                    </p>
+                    
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info">
+                            <h4 class="author-name">Ana Costa</h4>
+                            <p class="author-role">Enfermeira</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Perguntas Frequentes</h2>
+                <p class="section-subtitle">
+                    Tire suas dúvidas sobre o processo de quitação veicular
+                </p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3>O que é quitação veicular?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>A quitação veicular é o processo de liquidação total do financiamento do seu veículo. Através da negociação direta com bancos e financeiras, conseguimos condições especiais que permitem quitar a dívida com desconto significativo, liberando o gravame e regularizando toda a documentação.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3>Como sei se estou apto a quitar minha dívida?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Praticamente todos os casos de financiamento veicular podem ser negociados. Os melhores resultados são obtidos quando há atraso no pagamento das parcelas ou quando o cliente tem condições de fazer um pagamento à vista. Fazemos uma análise gratuita para verificar as possibilidades no seu caso específico.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3>Quais documentos preciso apresentar?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Geralmente são necessários: RG, CPF, comprovante de renda, comprovante de residência, documento do veículo (CRLV), contrato de financiamento e eventuais boletos em atraso. Nossa equipe orienta sobre toda a documentação necessária durante o processo.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3>Em quanto tempo o processo é finalizado?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>O tempo médio para conclusão é de 15 a 30 dias úteis, dependendo da complexidade do caso e da agilidade da instituição financeira. Mantemos nossos clientes informados sobre cada etapa do processo através de contato direto.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3>Há alguma taxa para análise do meu caso?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Não! A análise inicial é completamente gratuita. Só cobramos pelos nossos serviços após a aprovação da negociação e com a concordância do cliente. Trabalhamos com total transparência em relação aos custos envolvidos.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3>Posso manter o veículo após a quitação?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim! Após a quitação, o veículo fica livre de qualquer gravame financeiro e você pode utilizá-lo normalmente, vendê-lo ou trocá-lo quando desejar. O documento sairá em seu nome livre de qualquer pendência.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form 
+    <section id="contato" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contato</h2>
+                <p class="section-subtitle">
+                    Solicite uma análise gratuita da sua dívida veicular
+                </p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-form-container">
+                    <div class="form-card">
+                        <h3 class="form-title">Solicitar Análise Gratuita</h3>
+                        <form class="contact-form" onsubmit="submitForm(event)">
+                            <div class="form-group">
+                                <label for="name">Nome Completo *</label>
+                                <input type="text" id="name" name="name" required placeholder="Seu nome completo">
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="phone">Telefone *</label>
+                                    <input type="tel" id="phone" name="phone" required placeholder="(11) 99999-9999">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email">E-mail *</label>
+                                    <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="vehiclePlate">Placa do Veículo (opcional)</label>
+                                <input type="text" id="vehiclePlate" name="vehiclePlate" placeholder="ABC-1234">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Mensagem</label>
+                                <textarea id="message" name="message" rows="4" placeholder="Conte-nos sobre sua situação..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-primary btn-full">
+                                <i class="fas fa-paper-plane"></i>
+                                Solicitar Análise Gratuita
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <h3 class="contact-title">Informações de Contato</h3>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Telefone</h4>
+                                <p>(11) 3000-0000</p>
+                                <p>(11) 99999-9999</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>E-mail</h4>
+                                <p>contato@quitaveicular.com.br</p>
+                                <p>atendimento@quitaveicular.com.br</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Endereço</h4>
+                                <p>Rua das Flores, 123</p>
+                                <p>Centro - São Paulo, SP</p>
+                                <p>CEP: 01000-000</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hours-card">
+                        <h3 class="hours-title">Atendimento Especializado</h3>
+                        <p class="hours-description">
+                            Nossa equipe está pronta para atender você de segunda a sexta, das 8h às 18h.
+                        </p>
+                        <div class="hours-info">
+                            <p><strong>Horário de Funcionamento:</strong></p>
+                            <p>Segunda a Sexta: 8h às 18h</p>
+                            <p>Sábado: 8h às 12h</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <span class="footer-logo-text">QuitaVeicular</span>
+                    </div>
+                    <p class="footer-description">
+                        Especialistas em quitação veicular com mais de 10 anos de experiência. 
+                        Soluções rápidas, seguras e com as melhores condições do mercado.
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">Nossos Serviços</h3>
+                    <ul class="footer-list">
+                        <li>Quitação de Financiamento</li>
+                        <li>Renegociação de Dívidas</li>
+                        <li>Liberação de Gravame</li>
+                        <li>2ª Via de Boleto</li>
+                        <li>Antecipação de Parcelas</li>
+                        <li>Atendimento Online</li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">Redes Sociais</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="business-hours">
+                        <h4 class="hours-subtitle">Horário de Atendimento:</h4>
+                        <p>Segunda a Sexta: 8h às 18h</p>
+                        <p>Sábado: 8h às 12h</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-links">
+                    <a href="#">Termos de Uso</a>
+                    <a href="#">Política de Privacidade</a>
+                </div>
+                <p class="copyright">
+                    © 2024 Atendimento. Todos os direitos reservados. | CNPJ: 78.299.427/0001-20
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
