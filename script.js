@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // WhatsApp Integration
 function openWhatsApp(message) {
-    const phoneNumber = "5511999999999"; // Substitua pelo número real
+    const phoneNumber = "551151043636"; // Substitua pelo número real
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     window.open(whatsappUrl, '_blank');
